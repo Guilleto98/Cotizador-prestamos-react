@@ -1,32 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import {useState} from 'react';
+import Header from "./components/Header"
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [ quantity, setQuantity ] = useState(10000);
+
+  const MIN = 0;
+  const MAX = 20000;
+  const STEP = 100;
+  
+  
+  function handleChange(e){
+    setQuantity(Number(e.target.value))
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="my-20 max-w-lg mx-auto bg-white shadow p-10">
+      <Header/>
+
+      <input 
+        type='range'
+        className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-line-600"
+        onChange={ handleChange }
+        min={MIN}
+        max={MAX}
+        step={STEP}
+        value={quantity}
+      />
+
+      <p className='text-center my-10 text-5xl font-bold text-indigo-600'>{quantity}</p>
     </div>
   )
 }
