@@ -24,17 +24,12 @@ export const totalToPay = (quantity, term)=>{
     // while the high term, the higher the interest
 
     if( term === 6){
-        total += 1.1
+        total *= 1.1
     }else if( term === 12){
-        total += 1.3
+        total *= 1.3
     }else{
-        total += 1.5
+        total *= 1.5
     }
     return total;
 
-}
-
-export{
-    formatterMoney,
-    totalToPay
 }
